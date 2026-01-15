@@ -46,13 +46,9 @@ RUN wget -O /csv/gis_concept_relationship_fragment.csv https://raw.githubusercon
 # Copy SQL function files
 COPY sql/*.sql /sql/
 
-# Copy initialization script
-COPY init.sql /docker-entrypoint-initdb.d/init.sql
-
-# Default environment variables
-ENV POSTGRES_DB=gaiacore
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=postgres
+# Copy initialization scripts
+COPY init.sh /docker-entrypoint-initdb.d/01_init.sh
+COPY init.sql /docker-entrypoint-initdb.d/02_init.sql
 
 # Expose PostgreSQL port
 EXPOSE 5432
