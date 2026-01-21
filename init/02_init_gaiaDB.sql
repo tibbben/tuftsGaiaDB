@@ -113,6 +113,7 @@ CREATE TABLE backbone.attr_index (
             database_schema varchar(255) NOT NULL );
 
 -- Data source metadata table
+-- TODO: evaluate if we still need this ...
 CREATE TABLE IF NOT EXISTS backbone.data_source (
     data_source_uuid UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     dataset_id TEXT NOT NULL UNIQUE,
@@ -137,6 +138,7 @@ CREATE TABLE IF NOT EXISTS backbone.data_source (
 );
 
 -- Variable source table (tracks individual variables/attributes in datasets)
+-- TODO: evaluate if we still need this ...
 CREATE TABLE IF NOT EXISTS backbone.variable_source (
     variable_source_id SERIAL PRIMARY KEY,
     data_source_uuid UUID REFERENCES backbone.data_source(data_source_uuid),
